@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SeriesAPI-2 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "SeriesAPI-2 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
