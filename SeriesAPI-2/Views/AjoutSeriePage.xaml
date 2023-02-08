@@ -1,0 +1,89 @@
+<!--  Copyright (c) Microsoft Corporation and Contributors.  -->
+<!--  Licensed under the MIT License.  -->
+
+<Page
+    x:Class="SeriesAPI_2.Views.AjoutSeriePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:SeriesAPI_2.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    RequestedTheme="Dark"
+    mc:Ignorable="d">
+
+    <RelativePanel>
+        <TextBlock
+            x:Name="textblockTitle"
+            Margin="0,50,0,0"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            Text="Titre" />
+        <TextBox
+            x:Name="textboxTitle"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="textblockTitle"
+            Text="{Binding serieToAdd.Titre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock
+            x:Name="textblockResume"
+            Margin="0,50,0,0"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="textboxTitle"
+            Text="Resume" />
+        <TextBox
+            x:Name="textboxResume"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="textblockResume"
+            Text="{Binding serieToAdd.Resume, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock
+            x:Name="textblockNbSaisons"
+            Margin="0,50,0,0"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="textboxResume"
+            Text="Nb Saisons" />
+        <TextBox
+            x:Name="textboxNbSaisons"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="textblockNbSaisons"
+            Text="{Binding serieToAdd.NbSaisons, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock
+            x:Name="textblockNbEpisodes"
+            Margin="0,50,0,0"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="textboxNbSaisons"
+            Text="Nb Episodes" />
+        <TextBox
+            x:Name="textboxNbEpisodes"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="textblockNbEpisodes"
+            Text="{Binding serieToAdd.NbEpisodes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock
+            x:Name="textblockAnneeCreation"
+            Margin="0,50,0,0"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="textboxNbEpisodes"
+            Text="Annee de creation" />
+        <TextBox
+            x:Name="textboxAnneeCreation"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="textblockAnneeCreation"
+            Text="{Binding serieToAdd.AnneeCreation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock
+            x:Name="textblockChaine"
+            Margin="0,50,0,0"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="textboxAnneeCreation"
+            Text="Chaine" />
+        <TextBox
+            x:Name="textboxChaine"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="textblockChaine"
+            Text="{Binding serieToAdd.Network, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Button
+            x:Name="btnAjouter"
+            Margin="0,20,0,0"
+            Command="{Binding BtnAjoutSerie}"
+            Content="Ajouter"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.Below="textboxChaine" />
+    </RelativePanel>
+</Page>

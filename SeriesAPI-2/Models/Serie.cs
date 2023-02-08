@@ -8,6 +8,21 @@ namespace SeriesAPI.Models.EntityFramework;
 [Table("serie")]
 public partial class Serie
 {
+    public Serie()
+    {
+
+    }
+
+    public Serie(string titre, string resume, int nbsaisons, int nbepisodes, int anneecreation, string network)
+    {
+        Titre = titre;
+        Resume = resume;
+        Nbsaisons = nbsaisons;
+        Nbepisodes = nbepisodes;
+        Anneecreation = anneecreation;
+        Network = network;
+    }
+
     [Key]
     [Column("serieid")]
     public int Serieid { get; set; }
@@ -20,13 +35,13 @@ public partial class Serie
     public string? Resume { get; set; }
 
     [Column("nbsaisons")]
-    public int? Nbsaisons { get; set; }
+    public int Nbsaisons { get; set; }
 
     [Column("nbepisodes")]
-    public int? Nbepisodes { get; set; }
+    public int Nbepisodes { get; set; }
 
     [Column("anneecreation")]
-    public int? Anneecreation { get; set; }
+    public int Anneecreation { get; set; }
 
     [Column("network")]
     [StringLength(50)]
