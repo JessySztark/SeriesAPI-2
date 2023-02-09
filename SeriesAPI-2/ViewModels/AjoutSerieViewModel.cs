@@ -10,19 +10,25 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.AllJoyn;
 
 namespace SeriesAPI_2.ViewModels
 {
     public class AjoutSerieViewModel : ObservableObject
     {
         public IRelayCommand BtnAjoutSerie { get; }
-
         public AjoutSerieViewModel()
         {
-            GetDataOnLoadAsync();
             Serie serieToAdd = new Serie();
-            OnPropertyChanged(nameof(serieToAdd));
+            GetDataOnLoadAsync();
             BtnAjoutSerie = new RelayCommand(ActionSetConversion);
+            OnPropertyChanged(nameof(serieToAdd));
+        }
+
+        public Serie SerieToAdd
+        {
+            get { return serieToAdd; }
+            set { serieToAdd = value; }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -43,78 +49,6 @@ namespace SeriesAPI_2.ViewModels
             set
             {
                 lesSeries = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private String titre;
-
-        public String Titre
-        {
-            get { return titre; }
-            set
-            {
-                titre = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private String resume;
-
-        public String Resume
-        {
-            get { return resume; }
-            set
-            {
-                resume = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private int nbSaisons;
-
-        public int NbSaisons
-        {
-            get { return nbSaisons; }
-            set
-            {
-                nbSaisons = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private int nbEpisodes;
-
-        public int NbEpisodes
-        {
-            get { return nbEpisodes; }
-            set
-            {
-                nbEpisodes = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private int anneeCreation;
-
-        public int AnneeCreation
-        {
-            get { return anneeCreation; }
-            set
-            {
-                anneeCreation = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private String network;
-
-        public String Network
-        {
-            get { return network; }
-            set
-            {
-                network = value;
                 OnPropertyChanged();
             }
         }
@@ -140,17 +74,17 @@ namespace SeriesAPI_2.ViewModels
         {
             try
             {
-                if (Titre is null)
+                if (SerieToAdd.Titre is null)
                     throw new ArgumentOutOfRangeException("Veuillez entrer un titre.");
-                if (Resume is null)
+                if (SerieToAdd.Resume is null)
                     throw new ArgumentOutOfRangeException("Veuillez entrer un résumé.");
-                if (NbSaisons <=0)
+                if (SerieToAdd.NbSaisons <=0)
                     throw new ArgumentOutOfRangeException("La série doit comporter au moins une saison.");
-                if (NbEpisodes <= 0)
+                if (SerieToAdd.NbEpisodes <= 0)
                     throw new ArgumentOutOfRangeException("La série doit comporter au moins un épisode.");
-                if (AnneeCreation < 1900)
+                if (SerieToAdd.AnneeCreation < 1900)
                     throw new ArgumentOutOfRangeException("La série doit comporter une date valide.");
-                if (Network is null)
+                if (SerieToAdd.Network is null)
                     throw new ArgumentOutOfRangeException("Veuillez entrer une chaîne.");
             }
             catch (Exception ex)

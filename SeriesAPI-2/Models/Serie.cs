@@ -17,9 +17,9 @@ public partial class Serie
     {
         Titre = titre;
         Resume = resume;
-        Nbsaisons = nbsaisons;
-        Nbepisodes = nbepisodes;
-        Anneecreation = anneecreation;
+        NbSaisons = nbsaisons;
+        NbEpisodes = nbepisodes;
+        AnneeCreation = anneecreation;
         Network = network;
     }
 
@@ -35,13 +35,13 @@ public partial class Serie
     public string? Resume { get; set; }
 
     [Column("nbsaisons")]
-    public int Nbsaisons { get; set; }
+    public int NbSaisons { get; set; }
 
     [Column("nbepisodes")]
-    public int Nbepisodes { get; set; }
+    public int NbEpisodes { get; set; }
 
     [Column("anneecreation")]
-    public int Anneecreation { get; set; }
+    public int AnneeCreation { get; set; }
 
     [Column("network")]
     [StringLength(50)]

@@ -1,4 +1,5 @@
-﻿using SeriesAPI.Models.EntityFramework;
+﻿using Microsoft.AspNetCore.Mvc;
+using SeriesAPI.Models.EntityFramework;
 using SeriesAPI_2.ViewModels;
 using SeriesAPI_2.Views;
 using System;
@@ -37,24 +38,55 @@ namespace SeriesAPI_2.Services
                 return null;
             }
         }
+        public async Task<bool> PutSerieAsync(String nomControlleur, int id, Serie serie)
+        {
+            try
+            {
+                var reponse = await client.PutAsJsonAsync(nomControlleur + "/" + id, serie);
+                reponse.EnsureSuccessStatusCode();
+                if (reponse.IsSuccessStatusCode)
+                    return true;
+                return false;
+            }
 
-        public Task<List<Serie>> DeleteAsync(string nomController)
-        {
-            throw new NotImplementedException();
-        }
-        
-        public Task<List<Serie>> PostAsync(string nomController)
-        {
-            throw new NotImplementedException();
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
-        public async Task<List<Serie>> PutAsync(string nomController)
+        public async Task<ActionResult<bool>> PostSerieAsync(String nomControlleur, Serie serie)
         {
-            var json = JsonSerializer.Serialize();
-            var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
-            using var res = await client.PutAsync("api/users/profiles", stringContent);
-            res.EnsureSuccessStatusCode();
-            return res;
+            try
+            {
+                var reponse = await client.PostAsJsonAsync(nomControlleur, serie);
+                reponse.EnsureSuccessStatusCode();
+                if (reponse.IsSuccessStatusCode)
+                    return true;
+                return false;
+            }
+
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteSerieAsync(String nomControlleur, int id)
+        {
+            try
+            {
+                var reponse = await client.DeleteAsync(nomControlleur + "/" + id);
+                reponse.EnsureSuccessStatusCode();
+                if (reponse.IsSuccessStatusCode)
+                    return true;
+                return false;
+            }
+
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

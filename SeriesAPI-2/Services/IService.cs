@@ -1,4 +1,5 @@
-﻿using SeriesAPI.Models.EntityFramework;
+﻿using Microsoft.AspNetCore.Mvc;
+using SeriesAPI.Models.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ namespace SeriesAPI_2.Services
     interface IService{
 
         Task<List<Serie>> GetSeriesAsync(String nomController);
-        Task<List<Serie>> PutAsync(String nomController);
-        Task<List<Serie>> PostAsync(String nomController);
-        Task<List<Serie>> DeleteAsync(String nomController);
+        Task<bool> PutSerieAsync(String nomControlleur, int id, Serie serie);
+        Task<ActionResult<bool>> PostSerieAsync(String nomController, Serie serie);
+        Task<bool> DeleteSerieAsync(String nomController, int id);
     }
 }

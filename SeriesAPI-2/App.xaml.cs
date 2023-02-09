@@ -40,7 +40,6 @@ namespace SeriesAPI_2
         public App()
         {
             this.InitializeComponent();
-
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
                 .AddSingleton<AjoutSerieViewModel>()
